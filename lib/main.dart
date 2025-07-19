@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weadther_radar/screens/home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,8 +13,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Weadther App",
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
-      home: Scaffold(),
+      theme: ThemeData.dark(
+        useMaterial3: true,
+      ).copyWith(appBarTheme: AppBarTheme()),
+      home: HomePage(),
     );
   }
 }
