@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weadther_radar/screens/cardone.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -16,44 +17,17 @@ class HomePage extends StatelessWidget {
             fontSize: 25,
           ),
         ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              print("refresh");
+            },
+            icon: Icon(Icons.refresh, color: Colors.white),
+          ),
+        ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            // Mian card
-            SizedBox(
-              width: 450,
-              child: Card(
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    children: [
-                      Text(
-                        "300 °F ",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 36,
-                        ),
-                      ),
-                      Icon(Icons.cloud, size: 64),
-                      Text(
-                        "Rain",
-                        style: TextStyle(fontSize: 30, color: Colors.white),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      body: Column(children: [FirsrCard()]),
     );
   }
 }
