@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weadther_radar/screens/home_page.dart';
+import 'package:weadther_radar/Widgets/home_page.dart';
 
 void main() {
   runApp(MyApp());

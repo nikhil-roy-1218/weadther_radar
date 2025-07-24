@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:weadther_radar/screens/hourlyforecast.dart';
+import 'package:weadther_radar/Widgets/additionalinformation.dart';
+import 'package:weadther_radar/Widgets/hourlyforecast.dart';
 
 class FirsrCard extends StatelessWidget {
   const FirsrCard({super.key});
@@ -85,6 +86,36 @@ class FirsrCard extends StatelessWidget {
             ),
           ),
           SizedBox(height: 12),
+          // Third card
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SizedBox(
+                width: 125,
+                child: AdditionalInformation(
+                  icon: Icons.water_drop,
+                  tittle: "Humidity",
+                  value: "94",
+                ),
+              ),
+              SizedBox(
+                width: 125,
+                child: AdditionalInformation(
+                  icon: Icons.air,
+                  tittle: "wind Speed",
+                  value: 94.toString(),
+                ),
+              ),
+              SizedBox(
+                width: 125,
+                child: AdditionalInformation(
+                  icon: Icons.beach_access,
+                  tittle: "Pressure",
+                  value: "1012",
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );

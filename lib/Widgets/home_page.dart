@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weadther_radar/screens/cardone.dart';
+import 'package:weadther_radar/Widgets/cardone.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
