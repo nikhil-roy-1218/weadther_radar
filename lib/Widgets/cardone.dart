@@ -1,16 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:weadther_radar/Widgets/additionalinformation.dart';
 import 'package:weadther_radar/Widgets/hourlyforecast.dart';
+import 'package:http/http.dart' as http;
+import 'package:weadther_radar/api.dart';
 
-class FirsrCard extends StatelessWidget {
+class FirsrCard extends StatefulWidget {
   const FirsrCard({super.key});
+
+  @override
+  State<FirsrCard> createState() => _FirsrCardState();
+}
+
+class _FirsrCardState extends State<FirsrCard> {
+  @override
+  initState() {
+    super.initState();
+    getCurrentWeadther();
+  }
+
+  Future getCurrentWeadther() async {
+    final result = await http.get(
+      Uri.parse(
+        "https://api.weatherapi.com/v1/forecast.json?key=bf4adcdfbabc479682b55217252507&q=Patna&days=3&aqi=no&alerts=no",
+      ),
+    );
+    if (result.statusCode == 200) {
+      print("Weadther data fetched successfully");
+      // You can parse the JSON response here if needed
+    } else {
+      print("Failed to fetch weadther data: ${result.statusCode}");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           // Mian card
           SizedBox(
@@ -61,15 +88,50 @@ class FirsrCard extends StatelessWidget {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 // Add some space at the start
-                SizedBox(width: 160, child: HourlyForecastitem()),
-                SizedBox(width: 160, child: HourlyForecastitem()),
-                SizedBox(width: 160, child: HourlyForecastitem()),
-                SizedBox(width: 160, child: HourlyForecastitem()),
-                SizedBox(width: 160, child: HourlyForecastitem()),
+                SizedBox(
+                  width: 160,
+                  child: HourlyForecastitem(
+                    time: "9:00 AM",
+                    temperature: "301.17 °F",
+                    icon: Icons.cloud,
+                  ),
+                ),
+                SizedBox(
+                  width: 160,
+                  child: HourlyForecastitem(
+                    time: "10:00 AM",
+                    temperature: "302.15 °F",
+                    icon: Icons.wb_sunny,
+                  ),
+                ),
+                SizedBox(
+                  width: 160,
+                  child: HourlyForecastitem(
+                    time: "11:00 AM",
+                    temperature: "303.20 °F",
+                    icon: Icons.cloud_circle,
+                  ),
+                ),
+                SizedBox(
+                  width: 160,
+                  child: HourlyForecastitem(
+                    time: "12:00 PM",
+                    temperature: "304.25 °F",
+                    icon: Icons.wb_sunny,
+                  ),
+                ),
+                SizedBox(
+                  width: 160,
+                  child: HourlyForecastitem(
+                    time: "1:00 PM",
+                    temperature: "305.30 °F",
+                    icon: Icons.wb_cloudy,
+                  ),
+                ),
               ],
             ),
           ),
